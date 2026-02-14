@@ -1,0 +1,24 @@
+<template>
+    <lightning-card title="Account Finder">
+        <div class="slds-m-around_medium">
+            <lightning-input
+                type="number"
+                label="Annual Revenue"
+                formatter="currency"
+                value={annualRevenue}
+                onchange={handleChange}
+            ></lightning-input>
+            <lightning-button
+                label="Reset"
+                onclick={reset}
+                class="slds-m-top_small"
+            ></lightning-button>
+
+            <template lwc:if={accounts.data}>
+                <template for:each={accounts.data} for:item="account">
+                    <p key={account.Id}>{account.Name}</p>
+                </template>
+            </template>
+        </div>
+    </lightning-card>
+</template>

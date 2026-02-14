@@ -1,0 +1,17 @@
+trigger AccountAddressTrigger on Account (before insert, before update) {
+    boolean beforeInsert = Trigger.isBefore && Trigger.isInsert;
+    boolean beforeUpdate = Trigger.isBefore && Trigger.isUpdate;
+
+    if(beforeInsert || beforeUpdate){
+        for(Account acc : Trigger.new){
+            if(acc.Match_Billing_Address__c == true){
+                acc.ShippingStreet = acc.BillingStreet;
+                acc.ShippingCity = acc.BillingCity;
+                acc.ShippingState = acc.BillingState;
+                acc.ShippingPostalCode = acc.BillingPostalCode;
+                acc.ShippingCountry = acc.BillingCountry;
+            }
+        }
+
+    }
+}
