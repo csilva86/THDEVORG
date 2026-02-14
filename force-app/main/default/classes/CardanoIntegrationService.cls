@@ -72,6 +72,7 @@ public with sharing class CardanoIntegrationService {
             System.debug('Previous Block Hash: ' + blockInfo.previousBlockHash);
             System.debug('Block Height: ' + blockInfo.blockHeight);
             System.debug('Block Time: ' + blockInfo.timestamp);
+            System.debug('Block Info: ' + blockInfo);
 
             return response.getBody();
         } else {
